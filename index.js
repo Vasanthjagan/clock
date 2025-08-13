@@ -1,0 +1,30 @@
+var card=document.getElementById('card');
+var message=document.getElementById('message');
+card.addEventListener('mouseover',function(){
+card.style.backgroundColor='green';
+message.innerHTML='You are IN';
+});
+card.addEventListener('mouseout',function(){
+card.style.backgroundColor='red';
+message.innerHTML='You are OUT';
+});
+card.addEventListener('click',function(){
+card.style.backgroundColor='yellow';
+message.innerHTML='You clicked!';
+});
+
+function playTick() {
+    const sound = document.getElementById("tickSound");
+    sound.currentTime = 0; // restart sound
+    sound.play();
+}
+
+function updateClock() {
+    const clock = document.getElementById("clock");
+    const now = new Date();
+    clock.textContent = now.toLocaleTimeString();
+    playTick(); // play tick every second
+}
+
+setInterval(updateClock, 1000);
+updateClock();
